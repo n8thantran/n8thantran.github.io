@@ -3,21 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-    </style>
+    <title>Nathan Tran - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <h1>Coming Soon</h1>
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="toggle-label">
+            <span class="sun"><i class="fas fa-sun"></i></span>
+            <span class="moon"><i class="fas fa-moon"></i></span>
+        </label>
+    </div>
+
+    <canvas id="background"></canvas>
+    
+    <div id="resume-modal" class="modal">
+        <div class="modal-header">
+            <span class="modal-title">Resume</span>
+            <div class="modal-controls">
+                <a href="resume.pdf" download class="download-button" title="Download Resume">
+                    <i class="fas fa-download"></i>
+                </a>
+                <span class="close-button">&times;</span>
+            </div>
+        </div>
+        <div class="modal-content">
+            <object id="resume-iframe" data="resume.pdf" type="application/pdf">
+                <p>Unable to display PDF file. <a href="resume.pdf" download>Download</a> instead.</p>
+            </object>
+        </div>
+    </div>
+
+    <main class="content">
+        <section class="intro-section">
+            <h1>Nathan Tran</h1>
+            <p class="subtitle">Freshman CS @ SJSU</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/nthntrn" target="_blank" rel="noopener noreferrer" class="button linkedin" data-tooltip="Connect on LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="button resume" data-tooltip="View Resume" id="resume-button">
+                    <i class="fas fa-file-alt"></i>
+                </a>
+                <a href="https://github.com/n8thantran" target="_blank" rel="noopener noreferrer" class="button github" data-tooltip="View GitHub Projects">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="experience">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="company-logo">
+                        <img src="https://cdn.discordapp.com/attachments/1314127937733132311/1314127994704363541/smooshie.png?ex=6752a491&is=67515311&hm=bc50d74e75ced511a4d0b406218b5227453a2c71f4a1220c667e9706a8a7233f&" alt="Ego">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="header">
+                            <h3 class="company">Ego (YC W24)</h3>
+                            <span class="date">Nov. 2024 - Present</span>
+                        </div>
+                        <p class="position">Software Engineering Intern</p>
+                        <ul class="responsibilities">
+                            <li>Optimized LLM integration for enhanced user interactions, including game speech patterns and Discord activities, while improving backend efficiency through FastAPI optimizations and researching automated QA testing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SCE -->
+                <div class="timeline-item">
+                    <div class="company-logo">
+                        <img src="https://sce.sjsu.edu/favicon.ico" alt="Software and Computer Engineering Society">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="header">
+                            <h3 class="company">Software and Computer Engineering Society</h3>
+                            <span class="date">Sept. 2024 - Present</span>
+                        </div>
+                        <p class="position">Software Engineering Intern</p>
+                        <ul class="responsibilities">
+                            <li>Developed a Discord bot with LLM integration using FastAPI and LangChain, enabling members to interact with club services like the fridge inventory system and access school information through natural language queries.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SJSU -->
+                <div class="timeline-item">
+                    <div class="company-logo">
+                        <img src="https://sce.sjsu.edu/favicon.ico" alt="Software and Computer Engineering Society">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="header">
+                            <h3 class="company">Software and Computer Engineering Society</h3>
+                            <span class="date">Sept. 2024 - Present</span>
+                        </div>
+                        <p class="position">Artificial Intelligence & Machine Learning Officer</p>
+                        <ul class="responsibilities">
+                            <li>Led weekly workshops and team meetings focused on machine learning projects, guiding members through data analysis, model development, and collaborative coding practices using tools like Google Colab and Git</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="company-logo">
+                        <img src="https://cdn.freebiesupply.com/logos/large/2x/san-jose-state-spartans-logo-png-transparent.png" alt="SJSU">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="header">
+                            <h3 class="company">San Jose State University</h3>
+                            <span class="date">2024 - 2028</span>
+                        </div>
+                        <p class="position">B.S. Computer Science</p>
+                        <ul class="responsibilities">
+                            <li>Expected Graduation: Spring 2028</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
