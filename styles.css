@@ -310,7 +310,7 @@ h1 {
 .education h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
     color: var(--text-color);
 }
 
@@ -459,14 +459,13 @@ h1 {
 
 .experience .timeline-content .date,
 .experience .timeline-content .position,
-.experience .timeline-content .responsibilities li {
-    color: var(--text-color);
-    opacity: 1; 
-}
-
+.experience .timeline-content .responsibilities li,
 .hackathons .timeline-content .date,
 .hackathons .timeline-content .position,
-.hackathons .timeline-content .responsibilities li {
+.hackathons .timeline-content .responsibilities li,
+.education .timeline-content .date,
+.education .timeline-content .position,
+.education .timeline-content .responsibilities li {
     color: var(--text-color);
     opacity: 1; 
 }
@@ -636,4 +635,109 @@ h1 {
 .hackathons .link-button:hover {
     background: var(--button-hover);
     transform: translateY(-2px);
+}
+
+/* Add spacing for hackathon section */
+.hackathons {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hackathons h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.hackathons .timeline-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Add more space between hackathon items */
+.hackathons .timeline-item {
+    margin-bottom: 3rem;  /* Increased spacing between items */
+}
+
+/* Remove margin from last item to avoid extra space at bottom */
+.hackathons .timeline-item:last-child {
+    margin-bottom: 1rem;
+}
+
+/* Adjust spacing for project links */
+.project-links {
+    margin-top: 1.5rem;  /* Increased space above buttons */
+}
+
+.experience h2,
+.hackathons h2,
+.education h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+}
+
+/* Style education section consistently */
+.education .timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.education .company-logo {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.education .timeline-content {
+    flex: 1;
+}
+
+.education .timeline-content .header,
+.education .timeline-content .position {
+    margin-bottom: 0.5rem;
+}
+
+.education .timeline-content h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.education .timeline-content .date {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.education .timeline-content .position {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0.5rem 0;
+}
+
+.education .responsibilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.education .responsibilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.education .responsibilities li::before {
+    content: "- ";
+    position: absolute;
+    left: 0;
 }
