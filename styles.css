@@ -1,0 +1,357 @@
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --button-bg: rgba(255, 255, 255, 0.1);
+    --button-hover: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --button-bg: rgba(0, 0, 0, 0.1);
+    --button-hover: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.intro-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin: 1rem 0 3rem;
+    opacity: 0.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.button {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--text-color);
+    background: var(--button-bg);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.button i {
+    font-size: 1.5rem;
+}
+
+.button:hover {
+    background: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2;
+}
+
+#theme-switch {
+    display: none;
+}
+
+.toggle-label {
+    cursor: pointer;
+    padding: 1rem;
+    background: var(--button-bg);
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+    transform: rotate(180deg);
+}
+
+.sun, .moon {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+#theme-switch:checked ~ .toggle-label .sun {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+#theme-switch:not(:checked) ~ .toggle-label .moon {
+    opacity: 0;
+    transform: rotate(-180deg);
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    display: none;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+.company-logo {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.timeline-content .date {
+    color: #666;
+    font-size: 1rem;
+}
+
+.timeline-content .position {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0.5rem 0 1rem;
+}
+
+.responsibilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.responsibilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.responsibilities li::before {
+    content: "- ";
+    position: absolute;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: row;
+        padding-left: 0;
+    }
+    
+    .company-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .timeline-content .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .timeline-content .date {
+        margin-top: 0.5rem;
+    }
+}
+
+.experience,
+.education {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.education {
+    margin-top: 0.25rem;
+}
+
+.timeline-item {
+    margin-bottom: 1rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.experience h2,
+.education h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    background: var(--bg-color);
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 80vw;
+    height: 85vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    resize: both;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 10px 15px;
+    background: var(--button-bg);
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--text-color);
+}
+
+.modal-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.download-button {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.download-button:hover {
+    opacity: 0.7;
+}
+
+.close-button {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.close-button:hover {
+    opacity: 0.7;
+}
+
+.modal-title {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.modal-content {
+    height: calc(100% - 40px);
+    width: 100%;
+    background: white;
+}
+
+#resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
