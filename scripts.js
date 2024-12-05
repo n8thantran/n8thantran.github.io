@@ -72,10 +72,10 @@ function animate() {
             const distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < spacing * 1.5) {
-                const opacity = (1 - distance / (spacing * 1.5)) * 0.15;
+                const opacity = (1 - distance / (spacing * 1.5)) * 0.8;
                 ctx.beginPath();
                 ctx.strokeStyle = `${getComputedStyle(document.body).getPropertyValue('--text-color')}${Math.floor(opacity * 255).toString(16).padStart(2, '0')}`;
-                ctx.lineWidth = 0.5;
+                ctx.lineWidth = 0.8;
                 
                 const midX = (p1.x + p2.x) / 2;
                 const midY = (p1.y + p2.y) / 2;
@@ -100,7 +100,7 @@ function animate() {
             point.x, point.y, 0,
             point.x, point.y, glowSize * 4
         );
-        gradient.addColorStop(0, `${baseColor}20`);
+        gradient.addColorStop(0, `${baseColor}40`);
         gradient.addColorStop(1, `${baseColor}00`);
         
         ctx.beginPath();
@@ -109,7 +109,7 @@ function animate() {
         ctx.fill();
         
         ctx.beginPath();
-        ctx.fillStyle = `${baseColor}40`;
+        ctx.fillStyle = `${baseColor}80`;
         ctx.arc(point.x, point.y, glowSize, 0, Math.PI * 2);
         ctx.fill();
     });
@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close-button');
     const modalHeader = document.querySelector('.modal-header');
 
-    // Prevent the default action of the resume button
     btn.addEventListener('click', function(e) {
         e.preventDefault();
         modal.style.display = 'block';
@@ -142,14 +141,12 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
     });
 
-    // Close modal when clicking outside
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    // Dragging functionality
     let isDragging = false;
     let currentX;
     let currentY;

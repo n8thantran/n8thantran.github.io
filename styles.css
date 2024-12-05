@@ -165,11 +165,45 @@ h1 {
     display: none;
 }
 
-.timeline-item {
+.experience .timeline-item {
     display: flex;
     gap: 2rem;
     margin-bottom: 1rem;
     padding-left: 0;
+    position: relative;
+}
+
+.experience .timeline-item::after {
+    content: '→';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.experience .timeline-item:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.experience .timeline-content {
+    flex: 1;
+    cursor: pointer;
+}
+
+.experience .timeline-item:hover .timeline-content {
+    transform: translateX(-10px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.experience .timeline-item .timeline-content {
+    transform: translateX(0);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .company-logo {
@@ -185,10 +219,6 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.timeline-content {
-    flex: 1;
 }
 
 .timeline-content .header {
@@ -354,4 +384,127 @@ h1 {
     height: 100%;
     border: none;
     background: white;
+}
+
+.hackathons {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hackathons h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.hackathon-name {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.date {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.location {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color);
+    background: var(--button-bg);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.link-button:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.link-button i {
+    font-size: 1rem;
+}
+
+.experience .timeline-content .date,
+.experience .timeline-content .position,
+.experience .timeline-content .responsibilities li {
+    color: var(--text-color);
+    opacity: 1; 
+}
+
+.hackathons .timeline-content .date,
+.hackathons .timeline-content .position,
+.hackathons .timeline-content .responsibilities li {
+    color: var(--text-color);
+    opacity: 1; 
+}
+
+.hackathons .timeline-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hackathons .company-logo {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.hackathons .timeline-content {
+    flex: 1;
+}
+
+.hackathons .timeline-content .header,
+.hackathons .timeline-content .position {
+    margin-bottom: 0.5rem;
+}
+
+.hackathons .timeline-content .responsibilities {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.hackathons .timeline-content .responsibilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.hackathons .timeline-content .responsibilities li::before {
+    content: "- ";
+    position: absolute;
+    left: 0;
 }
