@@ -741,3 +741,11 @@ h1 {
     position: absolute;
     left: 0;
 }
+
+#resume-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* ... rest of your existing modal styles ... */
+}

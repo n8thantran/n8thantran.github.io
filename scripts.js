@@ -132,61 +132,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close-button');
     const modalHeader = document.querySelector('.modal-header');
 
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
+    let isDragging = false;
+    let startX;
+    let startY;
+    let currentTranslateX = -50;
+    let currentTranslateY = -50;
+
+    btn.addEventListener('click', function() {
         modal.style.display = 'block';
+        currentTranslateX = -50;
+        currentTranslateY = -50;
+        modal.style.transform = 'translate(-50%, -50%)';
     });
 
     closeBtn.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+    modalHeader.addEventListener('mousedown', function(e) {
+        if (e.target === modalHeader) {
+            isDragging = true;
+            
+            const rect = modal.getBoundingClientRect();
+            currentTranslateX = rect.left - (window.innerWidth / 2);
+            currentTranslateY = rect.top - (window.innerHeight / 2);
+            
+            startX = e.clientX - currentTranslateX;
+            startY = e.clientY - currentTranslateY;
+            
+            modal.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px)`;
         }
     });
 
-    let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    let xOffset = 0;
-    let yOffset = 0;
-
-    modalHeader.addEventListener('mousedown', dragStart);
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('mouseup', dragEnd);
-
-    function dragStart(e) {
-        if (e.target === modalHeader || e.target.parentElement === modalHeader) {
-            initialX = e.clientX - xOffset;
-            initialY = e.clientY - yOffset;
-            isDragging = true;
-        }
-    }
-
-    function drag(e) {
+    document.addEventListener('mousemove', function(e) {
         if (isDragging) {
             e.preventDefault();
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
-
-            xOffset = currentX;
-            yOffset = currentY;
-
-            setTranslate(currentX, currentY, modal);
+            currentTranslateX = e.clientX - startX;
+            currentTranslateY = e.clientY - startY;
+            modal.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px)`;
         }
-    }
+    });
 
-    function dragEnd() {
-        initialX = currentX;
-        initialY = currentY;
+    document.addEventListener('mouseup', function() {
         isDragging = false;
-    }
-
-    function setTranslate(xPos, yPos, el) {
-        el.style.transform = `translate(${xPos}px, ${yPos}px)`;
-    }
+    });
 });
