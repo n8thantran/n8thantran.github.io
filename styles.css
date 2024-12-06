@@ -154,73 +154,48 @@ h1 {
     transform: rotate(-180deg);
 }
 
-.timeline {
-    position: relative;
-    padding: 2rem 0;
-    max-width: 800px;
-    margin: 0 auto;
+.experience,
+.education,
+.hackathons {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.timeline::before {
-    display: none;
+.experience h2,
+.hackathons h2,
+.education h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
-.experience .timeline-item {
+.timeline-item {
     display: flex;
     gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
     margin-bottom: 1rem;
-    padding-left: 0;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.experience .timeline-item::after {
-    content: '→';
-    position: absolute;
-    right: -2rem;
-    top: 50%;
-    transform: translateY(-50%) translateX(20px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    font-size: 1.5rem;
-    color: var(--text-color);
-    pointer-events: none;
-}
-
-.experience .timeline-item:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-}
-
-.experience .timeline-content {
-    flex: 1;
-    cursor: pointer;
-}
-
-.experience .timeline-item:hover .timeline-content {
-    transform: translateX(-10px);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.experience .timeline-item .timeline-content {
-    transform: translateX(0);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .company-logo {
-    position: relative;
+    flex-shrink: 0;
     width: 60px;
     height: 60px;
     border-radius: 12px;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .company-logo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.timeline-content {
+    flex: 1;
 }
 
 .timeline-content .header {
@@ -237,14 +212,14 @@ h1 {
 }
 
 .timeline-content .date {
-    color: #666;
-    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
 .timeline-content .position {
     font-size: 1.1rem;
     color: var(--text-color);
-    margin: 0.5rem 0 1rem;
+    margin: 0.5rem 0;
 }
 
 .responsibilities {
@@ -257,7 +232,8 @@ h1 {
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #888;
+    color: var(--text-color);
+    opacity: 0.8;
     line-height: 1.6;
 }
 
@@ -267,53 +243,37 @@ h1 {
     left: 0;
 }
 
-@media (max-width: 768px) {
-    .timeline-item {
-        flex-direction: row;
-        padding-left: 0;
-    }
-    
-    .company-logo {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .timeline-content .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .timeline-content .date {
-        margin-top: 0.5rem;
-    }
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
 }
 
-.experience,
-.education {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+.link-button {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color) !important;
+    background: var(--button-bg);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid var(--text-color);
+    opacity: 1 !important;
 }
 
-.education {
-    margin-top: 0.25rem;
+.link-button:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
 }
 
-.timeline-item {
-    margin-bottom: 1rem;
+.link-button i {
+    font-size: 1rem;
 }
 
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.experience h2,
-.education h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-    color: var(--text-color);
-}
-
+/* ===== Resume Modal ===== */
 .modal {
     display: none;
     position: fixed;
@@ -347,32 +307,30 @@ h1 {
     gap: 15px;
 }
 
-.download-button {
-    color: var(--text-color);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0 5px;
-    text-decoration: none;
-}
-
-.download-button:hover {
-    opacity: 0.7;
-}
-
-.close-button {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0 5px;
-}
-
-.close-button:hover {
-    opacity: 0.7;
-}
-
 .modal-title {
     color: var(--text-color);
     font-weight: bold;
+}
+
+.download-button,
+.close-button {
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.download-button {
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.close-button {
+    font-size: 1.5rem;
+}
+
+.download-button:hover,
+.close-button:hover {
+    opacity: 0.7;
 }
 
 .modal-content {
@@ -388,364 +346,46 @@ h1 {
     background: white;
 }
 
-.hackathons {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.hackathons h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-.hackathon-name {
-    font-size: 1.3rem;
-    margin: 0.5rem 0;
-    color: var(--text-color);
-}
-
-.date {
-    color: var(--text-color);
-    opacity: 0.8;
-    font-size: 0.9rem;
-}
-
-.location {
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-bottom: 1rem;
-}
-
-.description {
-    color: var(--text-color);
-    opacity: 0.9;
-    line-height: 1.6;
-    margin: 1rem 0;
-}
-
-.project-links {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-.link-button {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--text-color) !important;
-    background: var(--button-bg);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    border: 1px solid var(--text-color);
-    opacity: 1 !important;
-}
-
-.link-button:hover {
-    background: var(--button-hover);
-    transform: translateY(-2px);
-}
-
-.link-button i {
-    font-size: 1rem;
-}
-
-.experience .timeline-content .date,
-.experience .timeline-content .position,
-.experience .timeline-content .responsibilities li,
-.hackathons .timeline-content .date,
-.hackathons .timeline-content .position,
-.hackathons .timeline-content .responsibilities li,
-.education .timeline-content .date,
-.education .timeline-content .position,
-.education .timeline-content .responsibilities li {
-    color: var(--text-color);
-    opacity: 1; 
-}
-
-.hackathons .timeline-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.hackathons .company-logo {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 0.5rem;
-}
-
-.hackathons .timeline-content {
-    flex: 1;
-}
-
-.hackathons .timeline-content .header,
-.hackathons .timeline-content .position {
-    margin-bottom: 0.5rem;
-}
-
-.hackathons .timeline-content .responsibilities {
-    margin-top: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.hackathons .timeline-content .responsibilities li {
+/* ===== Footer ===== */
+.footer {
     position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
-
-.hackathons .timeline-content .responsibilities li::before {
-    content: "- ";
-    position: absolute;
-    left: 0;
-}
-
-.experience .timeline-item,
-.hackathons .timeline-item {
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.experience .timeline-item:hover,
-.hackathons .timeline-item:hover {
-    transform: translateX(-10px);
-}
-
-.responsibilities li {
-    color: var(--text-color) !important;
-    opacity: 0.8;
-}
-
-/* Ensure hackathon buttons are visible and functional */
-.hackathons .project-links {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    visibility: visible !important; /* Force visibility */
-    opacity: 1 !important; /* Force opacity */
-}
-
-.hackathons .link-button {
-    display: inline-flex !important; /* Force display */
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--text-color) !important; /* Force color */
-    background: var(--button-bg);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    border: 1px solid var(--text-color);
-    opacity: 1 !important;
-}
-
-.hackathons .link-button:hover {
-    background: var(--button-hover);
-    transform: translateY(-2px);
-}
-
-/* Remove hover animation from hackathon items */
-.experience .timeline-item {
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.experience .timeline-item:hover {
-    transform: translateX(-10px);
-}
-
-/* Remove the general timeline-item hover styles */
-.hackathons .timeline-item {
-    cursor: default; /* Remove pointer cursor */
-}
-
-/* Keep only button animations for hackathons */
-.hackathons .link-button {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--text-color) !important;
-    background: var(--button-bg);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    border: 1px solid var(--text-color);
-    opacity: 1 !important;
-}
-
-.hackathons .link-button:hover {
-    background: var(--button-hover);
-    transform: translateY(-2px);
-}
-
-/* Keep animations only for experience section */
-.experience .timeline-item,
-.experience .timeline-item:hover {
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.experience .timeline-item:hover {
-    transform: translateX(-10px);
-}
-
-/* Remove all transitions from hackathon items */
-.hackathons .timeline-item {
-    cursor: default;
-    transition: none;
-    transform: none;
-}
-
-.hackathons .timeline-item:hover {
-    transform: none;
-}
-
-/* Keep only button animations for hackathons */
-.hackathons .link-button {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--text-color) !important;
-    background: var(--button-bg);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    border: 1px solid var(--text-color);
-    opacity: 1 !important;
-}
-
-.hackathons .link-button:hover {
-    background: var(--button-hover);
-    transform: translateY(-2px);
-}
-
-/* Add spacing for hackathon section */
-.hackathons {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.hackathons h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-.hackathons .timeline-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-/* Add more space between hackathon items */
-.hackathons .timeline-item {
-    margin-bottom: 3rem;  /* Increased spacing between items */
-}
-
-/* Remove margin from last item to avoid extra space at bottom */
-.hackathons .timeline-item:last-child {
-    margin-bottom: 1rem;
-}
-
-/* Adjust spacing for project links */
-.project-links {
-    margin-top: 1.5rem;  /* Increased space above buttons */
-}
-
-.experience h2,
-.hackathons h2,
-.education h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-    color: var(--text-color);
-}
-
-/* Style education section consistently */
-.education .timeline-item {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 1rem;
-}
-
-.education .company-logo {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.education .timeline-content {
-    flex: 1;
-}
-
-.education .timeline-content .header,
-.education .timeline-content .position {
-    margin-bottom: 0.5rem;
-}
-
-.education .timeline-content h3 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: var(--text-color);
-}
-
-.education .timeline-content .date {
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
     color: var(--text-color);
     opacity: 0.8;
+    font-size: 0.9rem;
 }
 
-.education .timeline-content .position {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin: 0.5rem 0;
+.footer i {
+    color: #e25555;
+    animation: heartbeat 1.5s ease infinite;
 }
 
-.education .responsibilities {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
-.education .responsibilities li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    line-height: 1.6;
-}
-
-.education .responsibilities li::before {
-    content: "- ";
-    position: absolute;
-    left: 0;
-}
-
-#resume-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* ... rest of your existing modal styles ... */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: row;
+        padding-left: 0;
+    }
+    
+    .company-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .timeline-content .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .timeline-content .date {
+        margin-top: 0.5rem;
+    }
 }

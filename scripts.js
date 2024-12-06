@@ -4,6 +4,14 @@ const ctx = canvas.getContext('2d');
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
+let mouseX = width / 2;
+let mouseY = height / 2;
+
+let lastMouseX = window.innerWidth / 2;
+let lastMouseY = window.innerHeight / 2;
+let mouseSpeedX = 0;
+let mouseSpeedY = 0;
+
 window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -29,9 +37,24 @@ class WavePoint {
         this.angle = Math.random() * Math.PI * 2;
         this.angleSpeed = (Math.random() - 0.5) * 0.001;
         this.size = Math.random() * 2 + 1;
+        this.originalRadius = this.radius;
     }
 
     update(time) {
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        const rotationSpeed = (mouseX - lastMouseX) * 0.001;
+
+        const dx = this.baseX - centerX;
+        const dy = this.baseY - centerY;
+        
+        const cos = Math.cos(rotationSpeed);
+        const sin = Math.sin(rotationSpeed);
+        
+        this.baseX = centerX + (dx * cos - dy * sin);
+        this.baseY = centerY + (dx * sin + dy * cos);
+        
         this.angle += this.angleSpeed;
         this.x = this.baseX + Math.cos(this.angle) * this.radius;
         this.y = this.baseY + Math.sin(this.angle) * this.radius;
@@ -176,4 +199,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', function() {
         isDragging = false;
     });
+});
+
+canvas.addEventListener('mousemove', (e) => {
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 });
