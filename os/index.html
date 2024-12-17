@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan OS Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div class="boot-screen" id="bootScreen">
+        <h1>Booting Nathan OS</h1>
+        <p>Loading...</p>
+        <div class="loading-bar"></div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen" style="display: none;">
+        <div class="login-window">
+            <h2>Welcome to Nathan OS</h2>
+            <div class="user-profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" alt="Guest User" class="profile-pic">
+                <p>Guest User</p>
+            </div>
+            <button onclick="login()" class="login-button">
+                <i class="fas fa-sign-in-alt"></i> Log In
+            </button>
+        </div>
+    </div>
+
+    <!-- Desktop -->
+    <div class="desktop" id="desktop" style="display: none;">
+        <!-- Desktop Icons -->
+        <div class="desktop-icon" onclick="openWindow('hackathons')">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Hackathons</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('experience')">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Experience</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('education')">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Education</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('about')">
+            <i class="fa-solid fa-user"></i>
+            <span>About Me</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('links')">
+            <i class="fa-solid fa-link"></i>
+            <span>Links</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('spotify')">
+            <i class="fa-brands fa-spotify"></i>
+            <span>My Music</span>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <button class="start-button">Start</button>
+            <div class="taskbar-items"></div>
+            <div class="taskbar-tray">
+                <span class="wifi-icon"><i class="fas fa-wifi"></i></span>
+                <span class="time" id="taskbar-time"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
